@@ -1,9 +1,11 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
+import authRoutes from "./routes/auth";
+import postsRoutes from "./routes/posts";
 
-const app = new Hono()
+const app = new Hono();
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+// ルートの統合
+app.route("/auth", authRoutes);
+app.route("/", postsRoutes);
 
-export default app
+export default app;
