@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { getCookie, setCookie } from "hono/cookie";
+import { setCookie } from "hono/cookie";
 
 const app = new Hono();
 
@@ -25,6 +25,12 @@ app.post("/login", async (c) => {
 
   // トークンを生成（実際のプロジェクトではJWTなどを使用）
   const token = `user-${user.id}-token`;
+  setCookie(c, "auth_token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/",
+  });
 
   return c.json({ message: "ログイン成功", token });
 });

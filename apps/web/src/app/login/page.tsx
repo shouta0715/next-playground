@@ -13,6 +13,7 @@ export default function LoginPage() {
 
     const formData = new FormData(event.currentTarget);
     const result = await login(formData);
+
     if (result.success) {
       router.push("/");
     } else {

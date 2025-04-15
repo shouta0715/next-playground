@@ -10,7 +10,7 @@ const posts = [
   { id: 3, title: "3番目の投稿", content: "これは3番目の投稿です" },
 ];
 
-app.get("/posts", authMiddleware, (c) => {
+app.get("/posts", (c) => {
   return c.json({ posts });
 });
 

@@ -1,5 +1,4 @@
 import { env } from "@/env";
-import { checkAuth } from "./check-auth";
 
 type Result<T> =
   | {
@@ -16,13 +15,11 @@ export const getData = async (): Promise<
     posts: { id: number; title: string; content: string }[];
   }>
 > => {
-  const authToken = await checkAuth();
-
+  await new Promise((resolve) => setTimeout(resolve, 5000));
   try {
-    const response = await fetch(`${env.API_URL}/posts`, {
-      headers: {
-        Authorization: `Bearer ${authToken.value}`,
-      },
+    const response = await fetch(`http://localhost:8787/posts`, {
+      credentials: "include",
+      cache: "no-store",
     });
 
     if (!response.ok) {

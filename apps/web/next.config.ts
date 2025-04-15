@@ -5,12 +5,6 @@ const nextConfig: NextConfig = {
   experimental: {
     authInterrupts: true,
   },
-  logging: {
-    fetches: {
-      fullUrl: true,
-      hmrRefreshes: true,
-    },
-  },
 };
 
 export default nextConfig;
